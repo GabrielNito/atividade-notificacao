@@ -15,11 +15,6 @@ Notifications.setNotificationHandler({
 export default function App() {
   async function enviarNotificacao() {
     try {
-      await Notifications.setNotificationChannelAsync('padrao', {
-        name: 'Notificações',
-        importance: Notifications.AndroidImportance.HIGH,
-      });
-
       const permissao = await Notifications.requestPermissionsAsync();
 
       if (!permissao.granted) {
@@ -31,6 +26,7 @@ export default function App() {
         content: {
           title: 'Olá!',
           body: 'Esta é uma notificação de teste.',
+          sound: 'default',
         },
         trigger: null,
       });
